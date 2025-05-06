@@ -12,5 +12,8 @@
       "src": "/(.*)",
       "dest": "Mainver2.py"
     }
-  ]
-} 
+  ],
+  "env": {
+    "OPENAI_API_KEY": "@openai-api-key"
+  }
+}
