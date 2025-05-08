@@ -32,7 +32,8 @@ class QueryResponse(BaseModel):
     sender: str = "bot"
     message: Optional[str] = None
 
-@app.get("/")
+@app.get("/", include_in_schema=False)
+@app.head("/", include_in_schema=False)
 async def root():
     return {"message": "DUE LLM Chat API is running (full context)"}
 
