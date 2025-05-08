@@ -23,6 +23,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+full_context = '''
+Trường Đại học Kinh tế - Đại học Đà Nẵng là một trong những trường đại học hàng đầu về đào tạo kinh tế, quản trị và tài chính tại khu vực miền Trung Việt Nam. Trường có nhiều chuyên ngành đa dạng như Kinh tế phát triển, Quản trị kinh doanh, Marketing, Tài chính - Ngân hàng, Kế toán, Kiểm toán, Quản trị du lịch, Quản trị sự kiện... Sinh viên được học tập trong môi trường năng động, sáng tạo, có nhiều cơ hội thực tập và việc làm tại các doanh nghiệp lớn trong và ngoài nước. Trường cũng chú trọng phát triển kỹ năng mềm, ngoại ngữ và tư duy đổi mới cho sinh viên.
+'''
+
 class QueryRequest(BaseModel):
     query: str
 
