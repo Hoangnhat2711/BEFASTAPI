@@ -5,6 +5,7 @@ from typing import List, Optional
 import openai
 import os
 from dotenv import load_dotenv
+from datetime import datetime
 
 # Load environment variables
 load_dotenv()
