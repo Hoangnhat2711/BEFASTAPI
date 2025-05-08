@@ -43,4 +43,10 @@ ENV/
 .env.local
 
 # Logs
-*.log 
+*.log
+
+# Environment variables
+.env
+__pycache__/
+*.pyc
+.DS_Store 
