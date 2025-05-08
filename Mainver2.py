@@ -6,6 +6,7 @@ import openai
 import os
 from dotenv import load_dotenv
 from datetime import datetime
+from openai import OpenAI
 
 # Load environment variables
 load_dotenv()
@@ -42,8 +43,10 @@ class QueryResponse(BaseModel):
 async def root():
     return {"message": "DUE LLM Chat API is running (full context)"}
 
+client = OpenAI()
+
 @app.post("/query", response_model=QueryResponse)
-async def process_query(query_request: QueryRequest):
+async def process_query(query_request: QueryRequest, request: Request):
     # Đưa toàn bộ context vào prompt
     system_prompt = (
         "Bạn là một trợ lý AI của trường Đại học Kinh tế - Đại học Đà Nẵng. "
@@ -56,13 +59,13 @@ async def process_query(query_request: QueryRequest):
     ]
     # Gọi OpenAI Chat Completion
     try:
-        response = openai.chat.completions.create(
+        response = client.chat.completions.create(
             model="gpt-4.1-nano",
             messages=messages,
             temperature=0.7,
             max_tokens=500
         )
-        answer = response.choices[0].message.content.strip()
+        answer = response.choices[0].message.content
     except Exception as e:
         answer = f"Lỗi khi gọi LLM: {str(e)}"
     timestamp = datetime.now().strftime("%H:%M:%S")
