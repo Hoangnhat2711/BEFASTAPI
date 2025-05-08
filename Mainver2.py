@@ -56,7 +56,7 @@ async def process_query(query_request: QueryRequest):
     ]
     # Gọi OpenAI Chat Completion
     try:
-        response = openai.ChatCompletion.create(
+        response = openai.chat.completions.create(
             model="gpt-4.1-nano",
             messages=messages,
             temperature=0.7,
